@@ -43,7 +43,7 @@ StcQuery.prototype.getBlockByNumber = generateFnFor('chain.get_block_by_number')
 StcQuery.prototype.getTransactionByHash = generateFnFor('eth_getTransactionByHash')
 StcQuery.prototype.getTransactionByBlockHashAndIndex = generateFnFor('eth_getTransactionByBlockHashAndIndex')
 StcQuery.prototype.getTransactionByBlockNumberAndIndex = generateFnFor('eth_getTransactionByBlockNumberAndIndex')
-StcQuery.prototype.getTransactionReceipt = generateFnFor('eth_getTransactionReceipt')
+StcQuery.prototype.getTransactionReceipt = generateFnFor('chain.get_transaction_info')
 StcQuery.prototype.getUncleByBlockHashAndIndex = generateFnFor('eth_getUncleByBlockHashAndIndex')
 StcQuery.prototype.getUncleByBlockNumberAndIndex = generateFnFor('eth_getUncleByBlockNumberAndIndex')
 StcQuery.prototype.getCompilers = generateFnFor('eth_getCompilers')
@@ -66,7 +66,6 @@ StcQuery.prototype.submitHashrate = generateFnFor('eth_submitHashrate')
 StcQuery.prototype.sendAsync = function (opts, cb) {
   const self = this
   self.currentProvider.sendAsync(createPayload(opts), function (err, response) {
-    console.log('sendAsync', opts, { response })
     if (cb && typeof cb === 'function') {
       if (!err && response.error) err = new Error('StcQuery - RPC Error - ' + response.error.message)
       if (err) return cb(err)
