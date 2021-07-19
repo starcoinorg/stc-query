@@ -15,6 +15,7 @@ function StcQuery(provider) {
 
 // default block
 StcQuery.prototype.getNodeInfo = generateFnFor('node.info')
+StcQuery.prototype.getChainInfo = generateFnFor('chain.info')
 StcQuery.prototype.getResource = generateFnFor('contract.get_resource')
 StcQuery.prototype.getBalance = generateFnFor('contract.get_resource')
 StcQuery.prototype.getCode = generateFnFor('contract.get_code')
@@ -22,6 +23,7 @@ StcQuery.prototype.getCode = generateFnFor('contract.get_code')
 StcQuery.prototype.gasPrice = generateFnFor('txpool.gas_price')
 StcQuery.prototype.sendRawTransaction = generateFnFor('txpool.submit_hex_transaction')
 StcQuery.prototype.estimateGas = generateFnFor('contract.dry_run')
+StcQuery.prototype.dryRunRaw = generateFnFor('contract.dry_run_raw')
 StcQuery.prototype.getBlockByNumber = generateFnFor('chain.get_block_by_number')
 StcQuery.prototype.getTransactionReceipt = generateFnFor('chain.get_transaction_info')
 
