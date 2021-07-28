@@ -19,6 +19,7 @@ StcQuery.prototype.getChainInfo = generateFnFor('chain.info')
 StcQuery.prototype.getResource = generateFnFor('contract.get_resource')
 StcQuery.prototype.getBalance = generateFnFor('contract.get_resource')
 StcQuery.prototype.getCode = generateFnFor('contract.get_code')
+StcQuery.prototype.listResource = generateFnFor('state.list_resource')
 // standard
 StcQuery.prototype.gasPrice = generateFnFor('txpool.gas_price')
 StcQuery.prototype.sendRawTransaction = generateFnFor('txpool.submit_hex_transaction')
