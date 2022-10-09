@@ -28,13 +28,21 @@ StcQuery.prototype.dryRunRaw = generateFnFor('contract.dry_run_raw')
 StcQuery.prototype.getBlockByNumber = generateFnFor('chain.get_block_by_number')
 StcQuery.prototype.getTransactionReceipt = generateFnFor('chain.get_transaction_info')
 
+// Aptos
+StcQuery.prototype.getAccount = generateFnFor('getAccount')
+
 // network level
 
 StcQuery.prototype.sendAsync = function (opts, cb) {
   const self = this
   self.currentProvider.sendAsync(createPayload(opts), function (err, response) {
     if (cb && typeof cb === 'function') {
-      if (!err && response.error) err = new Error('StcQuery - RPC Error - ' + response.error.message)
+      if (!err && response.error) {
+        err = new Error('StcQuery - ' + response.error.message)
+      }
+      if (!err && response.result && response.result.explained_status && response.result.explained_status.Error) {
+        err = new Error('StcQuery - ' + response.result.explained_status.Error)
+      }
       if (err) return cb(err)
       cb(null, response.result)
     }
