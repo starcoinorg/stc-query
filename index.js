@@ -30,6 +30,8 @@ StcQuery.prototype.getTransactionReceipt = generateFnFor('chain.get_transaction_
 
 // Aptos
 StcQuery.prototype.getAccount = generateFnFor('getAccount')
+StcQuery.prototype.getAccountResource = generateFnFor('getAccountResource')
+StcQuery.prototype.getAccountResources = generateFnFor('getAccountResources')
 
 // network level
 
